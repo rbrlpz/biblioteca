@@ -1,0 +1,10 @@
+body{
+	background: #888;
+}
+#container{
+	margin:3%;
+	min-width: 300px;
+	background: #fff;
+	padding: 20px;
+	border-radius:25px; 
+}
