@@ -67,7 +67,7 @@
 							"<div class='acciones'>"+
 							"<input type='button' class='modifica btn btn-warning' value='Modificar'>"+
 							"<input type='button' class='borrar btn btn-danger' value='Borrar'>"+
-							"</li>")
+							"</li>");
 					});
 
 				$(".acciones").hide();	
@@ -122,7 +122,10 @@ $(document).on("keyup", "#buscar", function(){
 						$("#lista_categorias").append("<li id='"+
 							registro.cat_id+"'>"+
 							registro.cat_nombre+
-							"</li>")
+							"<div class='acciones'>"+
+							"<input type='button' class='modifica btn btn-warning' value='Modificar'>"+
+							"<input type='button' class='borrar btn btn-danger' value='Borrar'>"+
+							"</li>");
 					});
 
 				$(".acciones").hide();	
