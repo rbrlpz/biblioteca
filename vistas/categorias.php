@@ -24,7 +24,7 @@
 			</div>
 		</form>
 		<section id="listado">
-			<input type="search" id="buscar">
+			<input type="search" id="buscar" placeholder="Buscar por nombre de categoria">
 			<ul id="lista_categorias"></ul>
 		</section>
 	</div>
