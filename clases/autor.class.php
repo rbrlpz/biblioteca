@@ -39,7 +39,7 @@ class Autor{
 	}
 	public static function buscaAutores($nombre){
 		$conexion = new Conexion();
-		$sql = "select * from autor where aut_nombre like '%$nombre%'";
+		$sql = "select *, aut_id as id, aut_nombre as label from autor where aut_nombre like '%$nombre%'";
 		$query = mysqli_query($conexion->link, $sql) or die("Error: ".mysqli_error($conexion->link));
 		while ($reg = mysqli_fetch_assoc($query)){ $regs[] = $reg;}		
 		echo json_encode($regs);

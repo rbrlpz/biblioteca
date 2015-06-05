@@ -40,7 +40,7 @@ class Editorial{
 	}
 	public static function buscaEditoriales($nombre){
 		$conexion = new Conexion();
-		$sql = "select * from editorial where edi_nombre like '%$nombre%'";
+		$sql = "select *, edi_id as id, edi_nombre as label from editorial where edi_nombre like '%$nombre%'";
 		$query = mysqli_query($conexion->link, $sql) or die("Error: ".mysqli_error($conexion->link));
 		while ($reg = mysqli_fetch_assoc($query)){ $regs[] = $reg;}		
 		echo json_encode($regs);
