@@ -50,7 +50,7 @@ class Categoria{
 	}
 	public static function buscaCategorias($nombre){
 		$conexion = new Conexion();
-		$sql = "select cat_id, cat_nombre from categoria 
+		$sql = "select cat_id, cat_nombre,cat_id as id, cat_nombre as label from categoria 
 					where cat_nombre like '%$nombre%'";
 		$consulta = mysqli_query($conexion->link, $sql) 
 			or die("Ocurrio un error:".mysqli_error($conexion->link));

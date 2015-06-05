@@ -17,38 +17,41 @@
 		<form id="form-insertar" action="" class="form">
 			<div class="form-container">
 				<label for="titulo">Titulo</label>
-				<input type="text" name="titulo" id="titulo" class="form-control">
+				<input type="text" name="titulo" id="titulo" class="form-control" placeholder="Titulo">
 			</div>
 			<div class="form-container">
 				<label for="isbn">ISBN</label>
-				<input type="text" name="isbn" id="isbn" class="form-control">
+				<input type="text" name="isbn" id="isbn" class="form-control" placeholder="ISBN">
 			</div>
 			<div class="form-container">
 				<label for="num_pags">No. páginas</label>
-				<input type="text" name="num_pags" id="num_pags" class="form-control">
+				<input type="text" name="num_pags" id="num_pags" class="form-control" placeholder="999">
 			</div>
 			<div class="form-container">
 				<label for="formato">Formato</label>
-				<input type="text" name="formato" id="formato" class="form-control">
+				<input type="text" name="formato" id="formato" class="form-control" placeholder="Impreso, digital, multimedia...">
 			</div>
 			<div class="form-container">
 				<label for="cantidad">Cantidad</label>
-				<input type="text" name="cantidad" id="cantidad" class="form-control">
+				<input type="text" name="cantidad" id="cantidad" class="form-control" placeholder="Cantidad en existencia">
 			</div>
 			<div class="form-container">
 				<label for="editorial">Editorial</label>
-				<input type="text" name="editorial" id="editorial" class="form-control">
+				<input type="text"  id="editorial" class="form-control"  placeholder="Escriba el nombre de la editorial">
 				<input type="hidden" name="edi_id" id="edi_id">
 			</div>
 			<div class="form-container">
 				<label for="autor">Autor</label>
-				<input type="text" name="autor" id="autor" class="form-control">
-				<select id="aut_id" name="aut_id" multiple></select>
+				<input type="text" id="autor" class="form-control"  placeholder="Escriba el nombre del autor">
+				<select id="aut_id" name="aut_id[]" multiple class="form-control"></select>
 			</div>
 			<div class="form-container">
 				<label for="categoria">Categoria</label>
-				<input type="text" name="categoria" id="categoria" class="form-control">
-				<select name="cat_id" multiple></select>
+				<input type="text" id="categoria" class="form-control" placeholder="Escriba el nombre de la categoria">
+				<select id="cat_id" name="cat_id[]" multiple class="form-control"></select>
+			</div>
+			<div class="form-container">
+				<input type="submit" id="insertar_libro" value="Insertar libro" class="form-control btn btn-primary">
 			</div>
 		</form>
 		<section id="listado">
@@ -79,11 +82,27 @@
 		$("#autor").autocomplete({
 			source: "../modelos/autores/listarNombreAutocomplete.php",
 			select: function(evento, autores){
-				console.log(autores);
-				$("#aut_id").append("<option value='"+
+				$("#aut_id").append("<option selected value='"+
 									autores.item.id
 								+"'>"+ autores.item.label+"</option>");
 			} 
+		});
+		$("#categoria").autocomplete({
+			source: "../modelos/categorias/listarNombreAutocomplete.php",
+			select: function(evento, categorias){
+				$("#cat_id").append("<option selected value='"+
+									categorias.item.id
+								+"'>"+ categorias.item.label+"</option>");
+			} 
+		});
+
+		$(document).on("click", "#insertar_libro", function(evento){
+			evento.preventDefault();
+			$.post("../modelos/libros/insertar.php", 
+				$("#form-insertar").serialize(),
+				function(respuesta){
+					alert(respuesta);
+				});
 		});
 	</script>
 </body>

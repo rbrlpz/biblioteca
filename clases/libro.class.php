@@ -1,4 +1,5 @@
 <?php
+include("conexion.class.php");
 class Libro{
 	// Atributos de clase
 	private $titulo;
@@ -31,7 +32,33 @@ class Libro{
 	public function setdisponible($disponible){	$this->disponible = $disponible; }
 	//metodos de acceso
 	public function altaLibro($titulo, $autores, $categorias, 
-							$editorial, $num_pags, $formato, $isbn, $cantidad){}
+							$editorial, $num_pags, $formato, $isbn, $cantidad){
+		$conexion  = new Conexion();
+		$sql = "INSERT INTO libro(lib_titulo, lib_isbn, 
+							lib_num_pags, lib_formato, lib_disponible, 
+							lib_cantidad) 
+				VALUES ('$titulo','$isbn','$num_pags','$formato',1, $cantidad)";
+		mysqli_query($conexion->link, $sql) or die(mysqli_error($conexion->link));
+		$lib_id = mysqli_insert_id($conexion->link);
+
+		$sql = "insert into libros_editorial(lie_lib_id, lie_edi_id) values(
+			$lib_id, $editorial)";
+		mysqli_query($conexion->link, $sql) or die(mysqli_error($conexion->link));
+
+		foreach ($autores as $autor) {
+			$sql = "insert into libros_autor(lia_lib_id, lia_aut_id) values(
+			$lib_id, $autor)";
+		mysqli_query($conexion->link, $sql) or die(mysqli_error($conexion->link));			
+		}
+
+		foreach ($categorias as $categoria) {
+			$sql = "insert into libros_categoria(lic_lib_id, lic_cat_id) values(
+			$lib_id, $categoria)";
+		mysqli_query($conexion->link, $sql) or die(mysqli_error($conexion->link));			
+		}
+	echo "Datos insertados correctamente";
+	}
+
 	public function bajaLibro($id){}
 	public function actualizaLibro(){}
 	public static function buscaLibro($id){}
