@@ -1,264 +1,1856 @@
--- MySQL dump 10.13  Distrib 5.6.24, for debian-linux-gnu (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 4.2.12deb2
+-- http://www.phpmyadmin.net
 --
--- Host: localhost    Database: biblio
--- ------------------------------------------------------
--- Server version	5.6.24-0ubuntu2
+-- Servidor: localhost
+-- Tiempo de generación: 11-06-2015 a las 17:14:25
+-- Versión del servidor: 5.6.24-0ubuntu2
+-- Versión de PHP: 5.6.4-4ubuntu6
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-DROP DATABASE IF EXISTS biblio;
-CREATE DATABASE biblio;
-USE biblio;
+
 --
--- Table structure for table `autor`
+-- Base de datos: `biblio`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `autor`
 --
 
 DROP TABLE IF EXISTS `autor`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `autor` (
-  `aut_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `autor` (
+`aut_id` int(11) NOT NULL,
   `aut_nombre` varchar(45) DEFAULT NULL,
-  `aut_email` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`aut_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `aut_email` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `autor`
+-- Truncar tablas antes de insertar `autor`
 --
 
-LOCK TABLES `autor` WRITE;
-/*!40000 ALTER TABLE `autor` DISABLE KEYS */;
-/*!40000 ALTER TABLE `autor` ENABLE KEYS */;
-UNLOCK TABLES;
+TRUNCATE TABLE `autor`;
+--
+-- Volcado de datos para la tabla `autor`
+--
+
+INSERT INTO `autor` (`aut_id`, `aut_nombre`, `aut_email`) VALUES
+(1, 'Francisco Javier Ceballos', NULL),
+(2, 'David Karlins', NULL),
+(3, 'Irv Englander', NULL),
+(4, 'Chistian Cibelli', NULL),
+(5, '', NULL),
+(6, 'Lemone Karen A.', NULL),
+(7, 'Mark Gillenson', NULL),
+(8, 'Jon Stephens', NULL),
+(9, ' Chad Rusell', NULL),
+(10, 'Luis Francisco García Rincón', NULL),
+(11, 'Michael Otey', NULL),
+(12, 'Chris Auld', NULL),
+(13, ' Allan Kent', NULL),
+(14, ' Rudy Limeback', NULL),
+(15, ' Nigel Stanger', NULL),
+(16, ' Thearon Willis', NULL),
+(17, 'George Reese', NULL),
+(18, 'Mary Beth Chrissis', NULL),
+(19, ' Mike Konrad', NULL),
+(20, ' Sandy Shrum', NULL),
+(21, 'Daniel M. Brandon', NULL),
+(22, 'Kenneth E. Kendall', NULL),
+(23, ' Julie E. Kendall', NULL),
+(24, 'Steve McConnell', NULL),
+(25, 'Mario Piattini Velthuis', NULL),
+(26, ' Emilio del Peso Navarro', NULL),
+(27, ' Mar del Peso Ruiz', NULL),
+(28, 'Mario Piattini Velthuis', NULL),
+(29, ' Javier Garzás Parra', NULL),
+(30, 'Mario G. Piattini', NULL),
+(31, ' Félix O. García', NULL),
+(32, ' Ismael Caballero', NULL),
+(33, 'Capers Jones', NULL),
+(34, 'Richard Fairley', NULL),
+(35, 'Eric J. Braude', NULL),
+(36, 'Stuart Rusell', NULL),
+(37, ' Peter Norving', NULL),
+(38, 'John E. Hopcroft', NULL),
+(39, ' Rajeev Motwani', NULL),
+(40, ' Jeffrey D. Ullman', NULL),
+(41, 'Roberto Hernández Sampieri', NULL),
+(42, ' Carlos Fernández-Collado', NULL),
+(43, ' Pilar Baptista Lucio', NULL),
+(44, 'Peter Morville', NULL),
+(45, ' Louis Rosenfeld', NULL),
+(46, 'Christina Wodtke', NULL),
+(47, ' Austin Govella', NULL),
+(48, 'Juan Cobo', NULL),
+(49, 'Ricardo Mendoza-González', NULL),
+(50, 'Kelly Goto', NULL),
+(51, ' Emily Cotler', NULL),
+(52, 'Alexander Osterwalder', NULL),
+(53, ' Yves Pigneur', NULL),
+(54, 'Anthony Scime', NULL),
+(55, 'Galit Shmueli', NULL),
+(56, ' Nitin R. Patel', NULL),
+(57, ' Peter C. Bruce', NULL),
+(58, 'Gordon S. Linoff', NULL),
+(59, ' Michael J. A. Berry', NULL),
+(60, 'Cesar Pérez', NULL),
+(61, ' Daniel Sa', NULL);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `categoria`
+-- Estructura de tabla para la tabla `categoria`
 --
 
 DROP TABLE IF EXISTS `categoria`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `categoria` (
-  `cat_id` int(11) NOT NULL AUTO_INCREMENT,
-  `cat_nombre` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`cat_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+CREATE TABLE IF NOT EXISTS `categoria` (
+`cat_id` int(11) NOT NULL,
+  `cat_nombre` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `categoria`
+-- Truncar tablas antes de insertar `categoria`
 --
 
-LOCK TABLES `categoria` WRITE;
-/*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
-/*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
-UNLOCK TABLES;
+TRUNCATE TABLE `categoria`;
+--
+-- Volcado de datos para la tabla `categoria`
+--
+
+INSERT INTO `categoria` (`cat_id`, `cat_nombre`) VALUES
+(1, 'categoria'),
+(2, 'Programación'),
+(3, 'Web'),
+(4, 'Arquitectura y Compiladores'),
+(5, 'Revistas'),
+(6, 'Base de Datos'),
+(7, 'Cloud Computing'),
+(8, 'Gestión de servicios de T.I.'),
+(9, 'Ingeniería de software'),
+(10, 'Inteligencia Artificial'),
+(11, 'Metodología de investigación'),
+(12, 'Minería de datos'),
+(13, 'Ofimática'),
+(14, 'Móviles'),
+(15, 'Videojuegos'),
+(16, 'Sistemas de Información'),
+(17, 'Redes'),
+(18, 'Seguridad'),
+(19, 'Sistemas Operativos'),
+(20, 'Software de diseño'),
+(21, 'User Experience'),
+(22, 'Sistema gestor de contenido'),
+(23, 'Negocios'),
+(24, 'Multimedia'),
+(25, 'Educación por competencias '),
+(26, 'Estadística'),
+(27, 'Otros');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `editorial`
+-- Estructura de tabla para la tabla `editorial`
 --
 
 DROP TABLE IF EXISTS `editorial`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `editorial` (
-  `edi_id` int(11) NOT NULL DEFAULT '0',
+CREATE TABLE IF NOT EXISTS `editorial` (
+`edi_id` int(11) NOT NULL,
   `edi_nombre` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `edi_email` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`edi_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `edi_email` varchar(40) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `editorial`
+-- Truncar tablas antes de insertar `editorial`
 --
 
-LOCK TABLES `editorial` WRITE;
-/*!40000 ALTER TABLE `editorial` DISABLE KEYS */;
-/*!40000 ALTER TABLE `editorial` ENABLE KEYS */;
-UNLOCK TABLES;
+TRUNCATE TABLE `editorial`;
+--
+-- Volcado de datos para la tabla `editorial`
+--
+
+INSERT INTO `editorial` (`edi_id`, `edi_nombre`, `edi_email`) VALUES
+(1, 'manufacturer', ''),
+(2, 'Alfaomega', ''),
+(3, 'Mc Graw Hill', ''),
+(4, 'Cecsa', ''),
+(5, 'Communications of the ACM', ''),
+(6, 'Entrepreneur', ''),
+(7, '    Cecsa ', ''),
+(8, 'Limusa Wiley', ''),
+(9, 'Apress', ''),
+(10, 'Trillas ', ''),
+(11, 'Glasshaus', ''),
+(12, 'O''Reilly', ''),
+(13, 'Pearson educación', ''),
+(14, 'Information Science Reference ', ''),
+(15, 'Microsoft Press', ''),
+(16, 'Pearson', ''),
+(17, 'Pearson Eduación', ''),
+(18, 'New Riders', ''),
+(19, 'VDM', ''),
+(20, 'Editorial Academica Española', ''),
+(21, 'Wiley', ''),
+(22, 'IGP', ''),
+(23, 'Alfapepe', ''),
+(24, 'Morgan Kaufmann', ''),
+(25, 'Paraninfo', ''),
+(26, 'O''Reillly', ''),
+(27, 'Thomson Delmar Learning ', ''),
+(28, 'Denmar Cengage Learning', ''),
+(29, '', ''),
+(30, 'Prentice-Hall Hispanoamericana', ''),
+(31, 'Pearson Education', ''),
+(32, 'Cisco Press', ''),
+(33, 'Pragmatic Bookshelf', ''),
+(34, 'Addison Wesley', ''),
+(35, 'No Starch Press', ''),
+(36, 'The Institution of Electrical Engineers', ''),
+(37, 'Anaya', ''),
+(38, 'Prentice Hall', ''),
+(39, 'International  thomson Editores', ''),
+(40, 'Autodesk', ''),
+(41, 'Anaya multimedia', ''),
+(42, 'Rockport', ''),
+(43, 'UXPin for design professionals', ''),
+(44, 'UXPin for desing professionals', ''),
+(45, 'The MIT Press', ''),
+(46, 'Addison-Wesley', ''),
+(47, 'UAweb', ''),
+(48, 'Packt', ''),
+(49, 'Enterpreneur', ''),
+(50, 'QUE', ''),
+(51, 'Kogan Page', ''),
+(52, 'Tecnológico de Monterrey', ''),
+(53, 'Esfinge', ''),
+(54, 'CONECTA', ''),
+(55, 'DIANA', '');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `libro`
+-- Estructura de tabla para la tabla `libro`
 --
 
 DROP TABLE IF EXISTS `libro`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `libro` (
-  `lib_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `libro` (
+`lib_id` int(11) NOT NULL,
   `lib_titulo` varchar(100) DEFAULT NULL,
   `lib_isbn` varchar(20) DEFAULT NULL,
   `lib_num_pags` varchar(4) DEFAULT NULL,
   `lib_formato` varchar(20) DEFAULT NULL,
   `lib_disponible` binary(1) DEFAULT NULL,
   `lib_portada` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`lib_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `lib_cantidad` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=217 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `libro`
+-- Truncar tablas antes de insertar `libro`
 --
 
-LOCK TABLES `libro` WRITE;
-/*!40000 ALTER TABLE `libro` DISABLE KEYS */;
-/*!40000 ALTER TABLE `libro` ENABLE KEYS */;
-UNLOCK TABLES;
+TRUNCATE TABLE `libro`;
+--
+-- Volcado de datos para la tabla `libro`
+--
+
+INSERT INTO `libro` (`lib_id`, `lib_titulo`, `lib_isbn`, `lib_num_pags`, `lib_formato`, `lib_disponible`, `lib_portada`, `lib_cantidad`) VALUES
+(1, 'title', 'isbn', NULL, 'DIGITAL', 0x31, NULL, 1),
+(2, 'Microsoft C+. Lenguaje y Aplicaciones', '9789701513712', NULL, 'DIGITAL', 0x31, NULL, 1),
+(3, 'Adobe Dreamweaver CS4 Técnicas esenciales ', '9786071502179', NULL, 'DIGITAL', 0x31, NULL, 1),
+(4, 'Arquitectura Computacional', '9702403294', NULL, 'DIGITAL', 0x31, NULL, 1),
+(5, 'Adobe Dreamweaver CS4 Técnicas esenciales ', '9786071502179', NULL, 'DIGITAL', 0x31, NULL, 1),
+(6, 'Adobe Dreamweaver CS4 Técnicas esenciales ', '9786071502179', NULL, 'DIGITAL', 0x31, NULL, 1),
+(7, 'PHP Programación Web avanzada para profesionales', '9789871609291', NULL, 'DIGITAL', 0x31, NULL, 1),
+(8, 'Communications of the ACM: Comparative analysis of protein networks ', '00010782-2', NULL, 'DIGITAL', 0x31, NULL, 1),
+(9, 'Communications of the ACM: Judea Pearl', '10782', NULL, 'DIGITAL', 0x31, NULL, 1),
+(10, 'Entrepreneur: Internet y las redes sociales', '16655087-4', NULL, 'DIGITAL', 0x31, NULL, 1),
+(11, 'Entrepreneur: 1500 oportunidades de negocios', '16655087-3', NULL, 'DIGITAL', 0x31, NULL, 1),
+(12, 'Fundamentos De Compiladores', '9682612977', NULL, 'DIGITAL', 0x31, NULL, 1),
+(13, 'Administracion de bases de datos', '9681865952', NULL, 'DIGITAL', 0x31, NULL, 1),
+(14, 'Beginning MySQL Database Design and Optimization', '1590593324', NULL, 'DIGITAL', 0x31, NULL, 1),
+(15, 'Bases De Datos: Un Enfoque Práctico', '9789682478017 ', NULL, 'DIGITAL', 0x31, NULL, 1),
+(16, 'Innovaciones microsoft sql server 2008', '9786071502353', NULL, 'DIGITAL', 0x31, NULL, 1),
+(17, 'Practical Web Database Desing', '1904151205', NULL, 'DIGITAL', 0x31, NULL, 1),
+(18, 'Cloud Application Architectures', '9780596156367', NULL, 'DIGITAL', 0x31, NULL, 1),
+(19, 'CMMI. Guia para la integración de procesos y la mejora de productos', '9780321279675', NULL, 'DIGITAL', 0x31, NULL, 1),
+(20, 'Software engineering for modern web application', '9781599044927', NULL, 'DIGITAL', 0x31, NULL, 1),
+(21, 'Análisis y diseño de sistemas', '9702605776', NULL, 'DIGITAL', 0x31, NULL, 1),
+(22, 'Code complete', '1556154844', NULL, 'DIGITAL', 0x31, NULL, 1),
+(23, 'Auditoría de tecnologías y sistemas de información', '9789701513781', NULL, 'DIGITAL', 0x31, NULL, 1),
+(24, 'Fábricas de software: Experiencias, tecnologías y organización', '9789701513156', NULL, 'DIGITAL', 0x31, NULL, 1),
+(25, 'Calidad de sistemas informáticos', '9789701512678', NULL, 'DIGITAL', 0x31, NULL, 1),
+(26, 'Estimación de costos y administración de proyectos de software', '9701067053', NULL, 'DIGITAL', 0x31, NULL, 1),
+(27, 'Ingeniería de software', '9684518544', NULL, 'DIGITAL', 0x31, NULL, 1),
+(28, 'Ingeniería de software. Una perspectiva orientada a objetos', '9701508513', NULL, 'DIGITAL', 0x31, NULL, 1),
+(29, 'Artificial Intelligence. A modern approach', '9780136042594', NULL, 'DIGITAL', 0x31, NULL, 1),
+(30, 'Teoría de autómatas, lenguajes y computación', '9788478290888', NULL, 'DIGITAL', 0x31, NULL, 1),
+(31, 'Metodología de la investigación', '9701057538', NULL, 'DIGITAL', 0x31, NULL, 1),
+(32, 'Information Architecture For The World Wide Web', '9780596527341', NULL, 'DIGITAL', 0x31, NULL, 1),
+(33, 'Information Architecture Blueprints For The Web', '9780321600806', NULL, 'DIGITAL', 0x31, NULL, 1),
+(34, 'Nuevas Arquitectura de la información, usabilidad e Internet', '9783639189346', NULL, 'DIGITAL', 0x31, NULL, 1),
+(35, 'Especificación Metodológica de la Usabilidad en Feedback de Seguridad', '9783846569795', NULL, 'DIGITAL', 0x31, NULL, 1),
+(36, 'Web ReDesign 2.0: Workflow That Works', '735714339', NULL, 'DIGITAL', 0x31, NULL, 1),
+(37, 'Business Model Generation', '9780470876411', NULL, 'DIGITAL', 0x31, NULL, 1),
+(38, 'Web mining: Applications and Techniques', '1591404142', NULL, 'DIGITAL', 0x31, NULL, 1),
+(39, 'Data mining for business intelligence', '9780470526828', NULL, 'DIGITAL', 0x31, NULL, 1),
+(40, 'Data mining techniques', '9780470650936', NULL, 'DIGITAL', 0x31, NULL, 1),
+(41, 'Data mining. Soluciones con Enterprise Miner', '9701511905', NULL, 'DIGITAL', 0x31, NULL, 1),
+(42, 'Informática 3. Informático certificado', '9786077686194', NULL, 'DIGITAL', 0x31, NULL, 1),
+(43, 'iPod, iPhone y iTunes', '9786071502506', NULL, 'DIGITAL', 0x31, NULL, 1),
+(44, 'Macros con Excel 2007', '9786071502377', NULL, 'DIGITAL', 0x31, NULL, 1),
+(45, 'Enciclopedia del lenguaje C++', '9786077686439', NULL, 'DIGITAL', 0x31, NULL, 1),
+(46, 'Data mining. Practical machine learning tools and techniques', '9780123748560', NULL, 'DIGITAL', 0x31, NULL, 1),
+(47, 'Aprenda ya Visual Basic 2005', '9789701058978', NULL, 'DIGITAL', 0x31, NULL, 1),
+(48, 'C++ estándar', '8497320409', NULL, 'DIGITAL', 0x31, NULL, 1),
+(49, 'Metodología de la programación', '970151100X', NULL, 'DIGITAL', 0x31, NULL, 1),
+(50, 'Metodología de la programación', '970151100X', NULL, 'DIGITAL', 0x31, NULL, 1),
+(51, 'Programming iOS4', '9781449388430', NULL, 'DIGITAL', 0x31, NULL, 1),
+(52, 'Programming Android', '9781449389697', NULL, 'DIGITAL', 0x31, NULL, 1),
+(53, 'Android: Programación de dispositivos móviles a través de ejemplos', '9786077073703', NULL, 'DIGITAL', 0x31, NULL, 1),
+(54, 'Android: Programación de dispositivos móviles a través de ejemplos', '9786077073703', NULL, 'DIGITAL', 0x31, NULL, 1),
+(55, 'Ingeniería de Software', '9786073206037', NULL, 'DIGITAL', 0x31, NULL, 1),
+(56, 'Game Development Essentials. Game Artificial Intelligence', '9781418038571', NULL, 'DIGITAL', 0x31, NULL, 1),
+(57, 'Game Development Essentials. Gameplay Mechanics', '9171418052690', NULL, 'DIGITAL', 0x31, NULL, 1),
+(58, 'Sistemas de información Gerencial: Administración de la empresa digital.', '9789702611912', NULL, 'DIGITAL', 0x31, NULL, 1),
+(59, 'Game Development Essentials. Game QA & Testing', '9781435439474', NULL, 'DIGITAL', 0x31, NULL, 1),
+(60, 'Game Development Essentials. Online Game Development', '9781418052676', NULL, 'DIGITAL', 0x31, NULL, 1),
+(61, 'Redes globales de información con Internet y TCP/IP', '9688805416', NULL, 'DIGITAL', 0x31, NULL, 1),
+(62, 'Game Development Essentials. Game Story & Character Development', '9781401878856', NULL, 'DIGITAL', 0x31, NULL, 1),
+(63, 'CCNP ROUTE 642-902 Official Certification Guide', '9781587202537', NULL, 'DIGITAL', 0x31, NULL, 1),
+(64, 'Fundamentos de PHP', '9789701071328', NULL, 'DIGITAL', 0x31, NULL, 1),
+(65, 'CCNP TSHOOT 642 832 Official Certification Guide', '9781587058448', NULL, 'DIGITAL', 0x31, NULL, 1),
+(66, 'Fundamentos de PHP', '9789701071328', NULL, 'DIGITAL', 0x31, NULL, 1),
+(67, 'CCNP SWITCH 642 813 Official Certification Guide', '9781587202438', NULL, 'DIGITAL', 0x31, NULL, 1),
+(68, 'Fundamentos de PHP', '9789701071328', NULL, 'DIGITAL', 0x31, NULL, 1),
+(69, 'Aprender Dreamweaver CS4 con 100 ejercicios prácticos', '9786077686385', NULL, 'DIGITAL', 0x31, NULL, 1),
+(70, 'CCNA 640-802 Network Simulator (Disponible en CD)', '9781587204449', NULL, 'DIGITAL', 0x31, NULL, 1),
+(71, 'HTML5 Digital Classroom', '781118016183', NULL, 'DIGITAL', 0x31, NULL, 1),
+(72, 'HTML5 Up and running', '9780596806026', NULL, 'DIGITAL', 0x31, NULL, 1),
+(73, 'CCNP ROUTE Lab Manual ', '9781587133039', NULL, 'DIGITAL', 0x31, NULL, 1),
+(74, 'Adobe Dreamweaver CS4 Técnicas esenciales ', '9786071502179', NULL, 'DIGITAL', 0x31, NULL, 1),
+(75, 'CCNP SWITCH Lab Manual', '9781587133046', NULL, 'DIGITAL', 0x31, NULL, 1),
+(76, 'CCNP TSHOOT Lab Manual', '9781587133053', NULL, 'DIGITAL', 0x31, NULL, 1),
+(77, 'HTML5 and CSS3. Develop with tomorrow''s standards today', '9781934356685', NULL, 'DIGITAL', 0x31, NULL, 1),
+(78, 'Creación de un portal con PHP y MySQL', '9786077071105', NULL, 'DIGITAL', 0x31, NULL, 1),
+(79, 'TCP/IP Illustrated: the protocols', '9780201633467', NULL, 'DIGITAL', 0x31, NULL, 1),
+(80, 'Creación de un portal con PHP y MySQL', '9786077071105', NULL, 'DIGITAL', 0x31, NULL, 1),
+(81, 'Creación de un portal con PHP y MySQL', '9786077071105', NULL, 'DIGITAL', 0x31, NULL, 1),
+(82, 'Practical Packet Analysis', '9781593272661', NULL, 'DIGITAL', 0x31, NULL, 1),
+(83, 'Intelligent Networks', '852969775', NULL, 'DIGITAL', 0x31, NULL, 1),
+(84, 'Mi primer proyecto web', '9786077071136', NULL, 'DIGITAL', 0x31, NULL, 1),
+(85, 'Ajax. Web 2.0 para profesionales', '9789701513286', NULL, 'DIGITAL', 0x31, NULL, 1),
+(86, 'Redes Privadas Virtuales', '9786077686668', NULL, 'DIGITAL', 0x31, NULL, 1),
+(87, 'Dreamweaver CS3', '9788441523043', NULL, 'DIGITAL', 0x31, NULL, 1),
+(88, 'Arquitecturas de Red Multicapa:Conexión de bases de datos', '9701511328', NULL, 'DIGITAL', 0x31, NULL, 1),
+(89, 'Dreamweaver CS3', '9788441523043', NULL, 'DIGITAL', 0x31, NULL, 1),
+(90, 'Cryptography And Network Security: Principles and practice', '9780136097044', NULL, 'DIGITAL', 0x31, NULL, 1),
+(91, 'HTML. Incluye nuevas características de la versión 5.', '9788441522879', NULL, 'DIGITAL', 0x31, NULL, 1),
+(92, 'Java SE 6', '9788441522886', NULL, 'DIGITAL', 0x31, NULL, 1),
+(93, 'Hacking exposed 6: Network security secrets & solutions ', '9780071613743', NULL, 'DIGITAL', 0x31, NULL, 1),
+(94, 'Principios de sistemas de informacion', '9687529970', NULL, 'DIGITAL', 0x31, NULL, 1),
+(95, 'Hacking exposed. Computer Forensics', '9780071626774', NULL, 'DIGITAL', 0x31, NULL, 1),
+(96, 'Sistemas de Información Herramientas Prácticas para la gestión empresarial.', '9786077073857', NULL, 'DIGITAL', 0x31, NULL, 1),
+(97, 'Firewalls and Internet Security: Repelling the Wily Hacker', '9780201634662', NULL, 'DIGITAL', 0x31, NULL, 1),
+(98, 'Tecnologías de información en los negocios', '9789701066669', NULL, 'DIGITAL', 0x31, NULL, 1),
+(99, 'Hacking y seguridad en Internet', '9789701513224', NULL, 'DIGITAL', 0x31, NULL, 1),
+(100, '19 Puntos críticos sobre seguridad de software', '9701058984', NULL, 'DIGITAL', 0x31, NULL, 1),
+(101, 'Manual de Administración de Linux', '9789701058824', NULL, 'DIGITAL', 0x31, NULL, 1),
+(102, 'Introducción a Microsoft Windows Vista', '9789701058664', NULL, 'DIGITAL', 0x31, NULL, 1),
+(103, 'Compras y pagos seguros por internet', '9789701514061', NULL, 'DIGITAL', 0x31, NULL, 1),
+(104, 'Understanding the LINUX KERNEL', '596000022', NULL, 'DIGITAL', 0x31, NULL, 1),
+(105, 'Aprender Windows 7 Multimedia y nuevas tecnologías con 100 ejercicios prácticos', '9786077854289', NULL, 'DIGITAL', 0x31, NULL, 1),
+(106, 'Guía oficial de CorelDRAW X4', '9789701070925', NULL, 'DIGITAL', 0x31, NULL, 1),
+(107, 'Sistemas Operativos Distribuidos', '9688806277', NULL, 'DIGITAL', 0x31, NULL, 1),
+(108, 'Autodesk 3D studio', '0', NULL, 'DIGITAL', 0x31, NULL, 1),
+(109, 'Windows Server 2008', '9788441524347', NULL, 'DIGITAL', 0x31, NULL, 1),
+(110, 'AutoCAD 2008 paso a paso. Trabajando en dos dimensiones ', '9789701512999', NULL, 'DIGITAL', 0x31, NULL, 1),
+(111, 'AutoCAD 2009, 3D y espacio papel', '9789586827669', NULL, 'DIGITAL', 0x31, NULL, 1),
+(112, 'AutoCAD 2008 Avanzado. Guía rápida', '9788448161132', NULL, 'DIGITAL', 0x31, NULL, 1),
+(113, 'Universal Methods of Design', '9781592537563', NULL, 'DIGITAL', 0x31, NULL, 1),
+(114, 'WEB KIT for web design', '0', NULL, 'DIGITAL', 0x31, NULL, 1),
+(115, 'Photoshop CS4 - Enfocarte', '9786077686767', NULL, 'DIGITAL', 0x31, NULL, 1),
+(116, 'MOBILE KIT for iPhone', '0', NULL, 'DIGITAL', 0x31, NULL, 1),
+(117, 'Adobe Photoshop CS3 Técnicas Esenciales ', '9789701069196', NULL, 'DIGITAL', 0x31, NULL, 1),
+(118, 'Adobe Illustrator CS4. Técnicas esenciales', '9786071502230', NULL, 'DIGITAL', 0x31, NULL, 1),
+(119, 'Designing Interactions', '9780262134743', NULL, 'DIGITAL', 0x31, NULL, 1),
+(120, 'Adobe Illustrator CS4. Técnicas esenciales', '9786071502230', NULL, 'DIGITAL', 0x31, NULL, 1),
+(121, 'No Me Hagas Pensar. Una aproximación a la usabilidad en la Web', '9788483222867', NULL, 'DIGITAL', 0x31, NULL, 1),
+(122, 'Adobe Illustrator CS4. Técnicas esenciales', '9786071502230', NULL, 'DIGITAL', 0x31, NULL, 1),
+(123, 'Adobe Photoshop CS4 Técnicas Esenciales ', '9786071502247', NULL, 'DIGITAL', 0x31, NULL, 1),
+(124, 'Measuring The User Experience', '9780123735584', NULL, 'DIGITAL', 0x31, NULL, 1),
+(125, 'Adobe Flash CS4. Técnicas escenciales', '9786071502155', NULL, 'DIGITAL', 0x31, NULL, 1),
+(126, 'A Project Guide to UX Design: For User Experience  designers in the field or in the making', '9780321607379', NULL, 'DIGITAL', 0x31, NULL, 1),
+(127, 'Adobe Flash CS4. Técnicas escenciales', '9786071502155', NULL, 'DIGITAL', 0x31, NULL, 1),
+(128, 'The Elements Of User Experience: User-centered Design For The Web', '9780735712027', NULL, 'DIGITAL', 0x31, NULL, 1),
+(129, 'Aprender Photoshop CS4 con 100 ejercicios prácticos ', '9786077686231', NULL, 'DIGITAL', 0x31, NULL, 1),
+(130, 'Aprender retoque fotográfico con Photoshop CS4 con 100 ejercicios prácticos', '9786077686583', NULL, 'DIGITAL', 0x31, NULL, 1),
+(131, 'Designing The iPhone User Experience. A User-Centered Approach to Sketching and Prototyping iPhone A', '9780321699435', NULL, 'DIGITAL', 0x31, NULL, 1),
+(132, 'Adobe Indesign CS4 técnicas esenciales ', '9786071502346', NULL, 'DIGITAL', 0x31, NULL, 1),
+(133, 'Communicating Design: Developing Web Site Documentation for Design and Planning', '9780321392350', NULL, 'DIGITAL', 0x31, NULL, 1),
+(134, 'Mejores Prácticas en el diseño de portales gubernamentales', '0', NULL, 'DIGITAL', 0x31, NULL, 1),
+(135, 'The definitive guide to Drupal 7', '9781430231356', NULL, 'DIGITAL', 0x31, NULL, 1),
+(136, 'Moodle 1.9. E-Learning Course Development', '9781847193537', NULL, 'DIGITAL', 0x31, NULL, 1),
+(137, 'Handbook of Usability Testing', '9780470185483', NULL, 'DIGITAL', 0x31, NULL, 1),
+(138, 'Moodle 1.9 Multimedia', '9781847195906', NULL, 'DIGITAL', 0x31, NULL, 1),
+(139, 'iPhone User Interface Design Projects', '9781430223597', NULL, 'DIGITAL', 0x31, NULL, 1),
+(140, 'Plataforma educativa Moodle: Administración y gestión', '9786077854494', NULL, 'DIGITAL', 0x31, NULL, 1),
+(141, 'Eyetracking Web Usability', '9870321498366', NULL, 'DIGITAL', 0x31, NULL, 1),
+(142, 'Start your own e-business', '1932156747', NULL, 'DIGITAL', 0x31, NULL, 1),
+(143, 'Recursos Didácticos en la WEB', '9789731514108', NULL, 'DIGITAL', 0x31, NULL, 1),
+(144, 'Televisión por Internet', '9789701514405', NULL, 'DIGITAL', 0x31, NULL, 1),
+(145, 'Strategic Internet Marketing ', '789708272', NULL, 'DIGITAL', 0x31, NULL, 1),
+(146, 'Televisión por Internet', '9789701514405', NULL, 'DIGITAL', 0x31, NULL, 1),
+(147, 'Understanding digital marketing: marketing strategies for engaging the digital generation', '9780749453893', NULL, 'DIGITAL', 0x31, NULL, 1),
+(148, 'Apuestas en Internet', '9789701514412', NULL, 'DIGITAL', 0x31, NULL, 1),
+(149, 'Trámites en línea', '9789701514436', NULL, 'DIGITAL', 0x31, NULL, 1),
+(150, 'Fotografía y video en internet', '9789701514047', NULL, 'DIGITAL', 0x31, NULL, 1),
+(151, 'Guía para evaluar por competencias ', '9786071701381', NULL, 'DIGITAL', 0x31, NULL, 1),
+(152, 'Nuevas alternativas de aprender y enseñar: aprendizaje cooperativo', '9789682473142', NULL, 'DIGITAL', 0x31, NULL, 1),
+(153, 'Maestros competentes: a través de la planeación y evaluación por competencias', '9786071707147', NULL, 'DIGITAL', 0x31, NULL, 1),
+(154, 'Técnicas de Análisis de Datos con SPSS 15', '9788483226018', NULL, 'DIGITAL', 0x31, NULL, 1),
+(155, 'Competencias para la investigación: Desarrollo de habilidades y conceptos', '9786071702050', NULL, 'DIGITAL', 0x31, NULL, 1),
+(156, '332 Estrategias para educar por competencias: cómo aplicar las competencias en el aula para bachille', '9786071704276', NULL, 'DIGITAL', 0x31, NULL, 1),
+(157, 'The Art of Computer Programming VOLUME 1 Fundamental Algorithms ', '9780201896831', NULL, 'DIGITAL', 0x31, NULL, 1),
+(158, 'The Art of Computer Programming VOLUME 2 Seminumerical Algorithms ', '9780201896848', NULL, 'DIGITAL', 0x31, NULL, 1),
+(159, 'The Art of Computer Programming VOLUME 3 Sorting and Searching', '9780201896855', NULL, 'DIGITAL', 0x31, NULL, 1),
+(160, 'Transferencia: ¿Como mejorar la calidad del aire?', '18706835', NULL, 'DIGITAL', 0x31, NULL, 1),
+(161, 'The Art of Computer Programming VOLUME 4A Combinatorial Algorithms part 1', '9780201038040', NULL, 'DIGITAL', 0x31, NULL, 1),
+(162, 'Entrepreneur: 100 ideas que puedes convertir en negocio ', '16655087', NULL, 'DIGITAL', 0x31, NULL, 1),
+(163, 'Entrepreneur: De emprendedor a empresario', '16655087-2', NULL, 'DIGITAL', 0x31, NULL, 1),
+(164, 'Programación gráfica para ingenieros', '9786077071556', NULL, 'DIGITAL', 0x31, NULL, 1),
+(165, 'Informática 1. Interfaz para el aprendizaje multidisciplinario', '9786071000521', NULL, 'DIGITAL', 0x31, NULL, 1),
+(166, 'Microsoft SQL Azure Administración y desarrollo en la nube', '9786077074298', NULL, 'DIGITAL', 0x31, NULL, 1),
+(167, 'Creación de un portal con PHP y MySQL', '9786077071105', NULL, 'DIGITAL', 0x31, NULL, 1),
+(168, 'Entrepeneur: Sé tu propia empresa', '16655087', NULL, 'DIGITAL', 0x31, NULL, 1),
+(169, 'Microsoft SQL Azure Administración y desarrollo en la nube ', '9786077074298', NULL, 'DIGITAL', 0x31, NULL, 1),
+(170, '¿Es lo bastante inteligente como para trabajar en Google?', '9786073109611', NULL, 'DIGITAL', 0x31, NULL, 1),
+(171, 'PHP Programación Web avanzada para profesionales', '9789871609291', NULL, 'DIGITAL', 0x31, NULL, 1),
+(172, 'Android: Programación de dispositivos móviles a través de ejemplos', '9786077073703', NULL, 'DIGITAL', 0x31, NULL, 1),
+(173, 'Creación de un portal con PHP y MySQL', '9786077071105', NULL, 'DIGITAL', 0x31, NULL, 1),
+(174, 'Communications of the ACM: Comparative analysis of protein networks', '00010782-2', NULL, 'DIGITAL', 0x31, NULL, 1),
+(175, 'Communications of the ACM: Judea Pearl', '10782', NULL, 'DIGITAL', 0x31, NULL, 1),
+(176, 'Communications of the ACM: Computational Folkloristics', '10782', NULL, 'DIGITAL', 0x31, NULL, 1),
+(177, 'Administración de Sistemas Operativos. Un enfoque práctico', '9786077072522', NULL, 'DIGITAL', 0x31, NULL, 1),
+(178, 'Sistemas de información. Herramientas prácticas para la gestión empresarial', '9786077073857', NULL, 'DIGITAL', 0x31, NULL, 1),
+(179, 'Microsoft SQL Azure Administración y desarrollo en la nube', '9786077074298', NULL, 'DIGITAL', 0x31, NULL, 1),
+(180, 'Creación de un portal con PHP y MySQL', '9786077071105', NULL, 'DIGITAL', 0x31, NULL, 1),
+(181, 'Planeación y evaluación basadas en competencias: Fundamentos y prácticas para el desarrollo de compe', '9789682479564', NULL, 'DIGITAL', 0x31, NULL, 1),
+(182, 'Python 3 al descubierto', '9786077074700', NULL, 'DIGITAL', 0x31, NULL, 1),
+(183, 'Programación de sistemas embebidos en C, teoría y prácticas aplicadas a cualquier microcontrolador.', '9789586827706', NULL, 'DIGITAL', 0x31, NULL, 1),
+(184, 'El gran libro de Android', '9786077075066', NULL, 'DIGITAL', 0x31, NULL, 1),
+(185, 'Entrepreneur: Negocios y oportunidades', '16655087', NULL, 'DIGITAL', 0x31, NULL, 1),
+(186, 'Dreamweaver CS3. Curso práctico', '9788478978601', NULL, 'DIGITAL', 0x31, NULL, 1),
+(187, 'Programming the mobile web', '9780596807788', NULL, 'DIGITAL', 0x31, NULL, 1),
+(188, 'PHP Programación Web avanzada para profesionales', '9789871609291', NULL, 'DIGITAL', 0x31, NULL, 1),
+(189, 'Joomla! explained: Your step by step guide', '9780321703781', NULL, 'DIGITAL', 0x31, NULL, 1),
+(190, 'Entrepreneur: 500 Franquicias', '16655087', NULL, 'DIGITAL', 0x31, NULL, 1),
+(191, 'Communications of the ACM', '10782', NULL, 'DIGITAL', 0x31, NULL, 1),
+(192, 'Communications of the ACM', '10782', NULL, 'DIGITAL', 0x31, NULL, 1),
+(193, 'El capacitador de ventas más grande del mundo', '968134068', NULL, 'DIGITAL', 0x31, NULL, 1),
+(194, 'Fundamentos de lógica computacional', '9682461006', NULL, 'DIGITAL', 0x31, NULL, 1),
+(195, 'Entrepreneur: Sé el numero 1 del mercado', '16655087', NULL, 'DIGITAL', 0x31, NULL, 1),
+(196, 'Entrepreneur: 50 negocios de medio tiempo', '16655087', NULL, 'DIGITAL', 0x31, NULL, 1),
+(197, 'Criptografía, protección de datos y aplicaciones', '9786077074694', NULL, 'DIGITAL', 0x31, NULL, 1),
+(198, 'Guía práctica de XHTML, Javascript y CSS', '9786077072225', NULL, 'DIGITAL', 0x31, NULL, 1),
+(199, 'Guía práctica de XHTML, Javascript y CSS', '9786077072225', NULL, 'DIGITAL', 0x31, NULL, 1),
+(200, 'Python 3 al descubierto', '9786077074700', NULL, 'DIGITAL', 0x31, NULL, 1),
+(201, 'Programación gráfica para ingenieros', '9786077071556', NULL, 'DIGITAL', 0x31, NULL, 1),
+(202, 'C# para estudiantes', '9786073203289', NULL, 'DIGITAL', 0x31, NULL, 1),
+(203, 'Programación de bases de datos con MySQL y PHP', '9786077854777', NULL, 'DIGITAL', 0x31, NULL, 1),
+(204, 'Sistemas Operativos para Ingenieros; Interporaridad de los sistemas distribuidos', '9783845485355', NULL, 'DIGITAL', 0x31, NULL, 1),
+(205, 'Mining the Social Web', '9781449388348', NULL, 'DIGITAL', 0x31, NULL, 1),
+(206, 'Oracle 11g; curso práctico.', '9789586828208', NULL, 'DIGITAL', 0x31, NULL, 1),
+(207, 'Usability Engineering', '9780125184069', NULL, 'DIGITAL', 0x31, NULL, 1),
+(208, 'Cómo programar en C++', '9789702612735', NULL, 'DIGITAL', 0x31, NULL, 1),
+(209, 'Implementing Responsive Design', '9780321821683', NULL, 'DIGITAL', 0x31, NULL, 1),
+(210, 'Programación en C, C++, Java y UML', '9789701069493', NULL, 'DIGITAL', 0x31, NULL, 1),
+(211, 'Algoritmos a fondo: con implementaciones en C y Java', '9789871609376', NULL, 'DIGITAL', 0x31, NULL, 1),
+(212, 'Responsive Design Workflow', '9780321887863', NULL, 'DIGITAL', 0x31, NULL, 1),
+(213, 'Microsoft SQL Azure Administración y desarrollo en la nube', '9786077074298', NULL, 'DIGITAL', 0x31, NULL, 1),
+(214, 'Microsoft SQL Server 2008 R2 Motor de Base de Datos y administracion', '97860770721956', NULL, 'DIGITAL', 0x31, NULL, 1),
+(215, 'Metodología de la investigación', '9786071502919', NULL, 'DIGITAL', 0x31, NULL, 1),
+(216, 'Metodología de la investigación', '9786071502919', NULL, 'DIGITAL', 0x31, NULL, 1);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `libros_autor`
+-- Estructura de tabla para la tabla `libros_autor`
 --
 
 DROP TABLE IF EXISTS `libros_autor`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `libros_autor` (
+CREATE TABLE IF NOT EXISTS `libros_autor` (
   `lia_lib_id` int(11) NOT NULL,
-  `lia_aut_id` int(11) NOT NULL,
-  KEY `fk_libros_autor_libros` (`lia_lib_id`),
-  KEY `fk_libros_autor_autor` (`lia_aut_id`),
-  CONSTRAINT `fk_libros_autor_autor` FOREIGN KEY (`lia_aut_id`) REFERENCES `autor` (`aut_id`),
-  CONSTRAINT `fk_libros_autor_libros` FOREIGN KEY (`lia_lib_id`) REFERENCES `libro` (`lib_id`)
+  `lia_aut_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `libros_autor`
+-- Truncar tablas antes de insertar `libros_autor`
 --
 
-LOCK TABLES `libros_autor` WRITE;
-/*!40000 ALTER TABLE `libros_autor` DISABLE KEYS */;
-/*!40000 ALTER TABLE `libros_autor` ENABLE KEYS */;
-UNLOCK TABLES;
+TRUNCATE TABLE `libros_autor`;
+--
+-- Volcado de datos para la tabla `libros_autor`
+--
+
+INSERT INTO `libros_autor` (`lia_lib_id`, `lia_aut_id`) VALUES
+(2, 1),
+(3, 2),
+(5, 2),
+(6, 2),
+(74, 2),
+(4, 3),
+(3, 2),
+(5, 2),
+(6, 2),
+(74, 2),
+(3, 2),
+(5, 2),
+(6, 2),
+(74, 2),
+(7, 4),
+(8, 5),
+(9, 5),
+(10, 5),
+(11, 5),
+(12, 6),
+(13, 7),
+(15, 10),
+(16, 11),
+(18, 17),
+(20, 21),
+(22, 24),
+(26, 33),
+(27, 34),
+(55, 34),
+(28, 35),
+(34, 48),
+(35, 49),
+(38, 54),
+(3, 2),
+(5, 2),
+(6, 2),
+(74, 2),
+(8, 5),
+(9, 5),
+(118, 2),
+(120, 2),
+(122, 2),
+(118, 2),
+(120, 2),
+(122, 2),
+(118, 2),
+(120, 2),
+(122, 2),
+(160, 5),
+(162, 5),
+(163, 5),
+(168, 5),
+(171, 4),
+(188, 4),
+(174, 5),
+(175, 5),
+(174, 5),
+(175, 5),
+(176, 5),
+(185, 5),
+(190, 5),
+(191, 5),
+(192, 5),
+(191, 5),
+(192, 5),
+(195, 5),
+(196, 5),
+(1, 15),
+(2, 15),
+(3, 34),
+(4, 32),
+(5, 55),
+(6, 35),
+(7, 6),
+(8, 46),
+(9, 38),
+(10, 23),
+(11, 16),
+(12, 26),
+(13, 47),
+(14, 9),
+(15, 28),
+(16, 25),
+(17, 23),
+(18, 54),
+(19, 42),
+(20, 59),
+(21, 24),
+(22, 15),
+(23, 42),
+(24, 11),
+(25, 34),
+(26, 35),
+(27, 20),
+(28, 30),
+(29, 42),
+(30, 54),
+(31, 12),
+(32, 37),
+(33, 31),
+(34, 4),
+(35, 36),
+(36, 52),
+(37, 48),
+(38, 17),
+(39, 35),
+(40, 38),
+(41, 18),
+(42, 38),
+(43, 53),
+(44, 52),
+(45, 31),
+(46, 42),
+(47, 1),
+(48, 31),
+(49, 23),
+(50, 58),
+(51, 58),
+(52, 23),
+(53, 2),
+(54, 56),
+(55, 22),
+(56, 55),
+(57, 24),
+(58, 4),
+(59, 50),
+(60, 3),
+(61, 50),
+(62, 47),
+(63, 17),
+(64, 1),
+(65, 48),
+(66, 26),
+(67, 35),
+(68, 48),
+(69, 7),
+(70, 3),
+(71, 46),
+(72, 12),
+(73, 35),
+(74, 14),
+(75, 3),
+(76, 51),
+(77, 32),
+(78, 2),
+(79, 55),
+(80, 45),
+(81, 57),
+(82, 33),
+(83, 41),
+(84, 46),
+(85, 58),
+(86, 59),
+(87, 51),
+(88, 48),
+(89, 19),
+(90, 6),
+(91, 49),
+(92, 60),
+(93, 22),
+(94, 57),
+(95, 4),
+(96, 56),
+(97, 27),
+(98, 38),
+(99, 36),
+(100, 35),
+(101, 37),
+(102, 9),
+(103, 6),
+(104, 45),
+(105, 37),
+(106, 37),
+(107, 20),
+(108, 47),
+(109, 45),
+(110, 53),
+(111, 35),
+(112, 20),
+(113, 25),
+(114, 27),
+(115, 34),
+(116, 37),
+(117, 8),
+(118, 12),
+(119, 4),
+(120, 55),
+(121, 33),
+(122, 30),
+(123, 27),
+(124, 7),
+(125, 59),
+(126, 24),
+(127, 39),
+(128, 51),
+(129, 26),
+(130, 27),
+(131, 45),
+(132, 47),
+(133, 9),
+(134, 24),
+(135, 61),
+(136, 61),
+(137, 12),
+(138, 6),
+(139, 27),
+(140, 59),
+(141, 10),
+(142, 59),
+(143, 38),
+(144, 49),
+(145, 10),
+(146, 32),
+(147, 34),
+(148, 17),
+(149, 2),
+(150, 7),
+(151, 54),
+(152, 59),
+(153, 22),
+(154, 54),
+(155, 26),
+(156, 41),
+(157, 47),
+(158, 3),
+(159, 52),
+(160, 48),
+(161, 22),
+(162, 4),
+(163, 39),
+(164, 43),
+(165, 8),
+(166, 21),
+(167, 55),
+(168, 13),
+(169, 50),
+(170, 59),
+(171, 36),
+(172, 25),
+(173, 50),
+(174, 23),
+(175, 9),
+(176, 47),
+(177, 3),
+(178, 27),
+(179, 8),
+(180, 38),
+(181, 26),
+(182, 24),
+(183, 14),
+(184, 44),
+(185, 20),
+(186, 38),
+(187, 14),
+(188, 15),
+(189, 35),
+(190, 18),
+(191, 37),
+(192, 41),
+(193, 38),
+(194, 50),
+(195, 57),
+(196, 46),
+(197, 3),
+(198, 50),
+(199, 29),
+(200, 20),
+(201, 60),
+(202, 44),
+(203, 6),
+(204, 20),
+(205, 42),
+(206, 43),
+(207, 41),
+(208, 2),
+(209, 11),
+(210, 34),
+(211, 4),
+(212, 21),
+(213, 46),
+(214, 35),
+(215, 50),
+(216, 39),
+(1, 10),
+(2, 6),
+(3, 41),
+(4, 33),
+(5, 1),
+(6, 36),
+(7, 23),
+(8, 28),
+(9, 45),
+(10, 21),
+(11, 2),
+(12, 9),
+(13, 36),
+(14, 48),
+(15, 59),
+(16, 2),
+(17, 4),
+(18, 1),
+(19, 26),
+(20, 47),
+(21, 49),
+(22, 50),
+(23, 23),
+(24, 9),
+(25, 32),
+(26, 37),
+(27, 42),
+(28, 24),
+(29, 13),
+(30, 13),
+(31, 14),
+(32, 30),
+(33, 27),
+(34, 30),
+(35, 36),
+(36, 38),
+(37, 16),
+(38, 26),
+(39, 17),
+(40, 2),
+(41, 59),
+(42, 43),
+(43, 13),
+(44, 18),
+(45, 36),
+(46, 23),
+(47, 46),
+(48, 47),
+(49, 53),
+(50, 37),
+(51, 44),
+(52, 2),
+(53, 22),
+(54, 3),
+(55, 58),
+(56, 48),
+(57, 22),
+(58, 29),
+(59, 45),
+(60, 25),
+(61, 31),
+(62, 27),
+(63, 5),
+(64, 16),
+(65, 38),
+(66, 54),
+(67, 59),
+(68, 52),
+(69, 54),
+(70, 22),
+(71, 26),
+(72, 44),
+(73, 14),
+(74, 61),
+(75, 28),
+(76, 28),
+(77, 31),
+(78, 3),
+(79, 58),
+(80, 50),
+(81, 26),
+(82, 12),
+(83, 56),
+(84, 45),
+(85, 50),
+(86, 31),
+(87, 53),
+(88, 41),
+(89, 56),
+(90, 56),
+(91, 13),
+(92, 58),
+(93, 45),
+(94, 51),
+(95, 21),
+(96, 21),
+(97, 58),
+(98, 60),
+(99, 10),
+(100, 48),
+(101, 18),
+(102, 54),
+(103, 5),
+(104, 20),
+(105, 25),
+(106, 25),
+(107, 30),
+(108, 3),
+(109, 10),
+(110, 57),
+(111, 23),
+(112, 58),
+(113, 52),
+(114, 34),
+(115, 1),
+(116, 42),
+(117, 9),
+(118, 14),
+(119, 5),
+(120, 18),
+(121, 12),
+(122, 34),
+(123, 51),
+(124, 32),
+(125, 18),
+(126, 4),
+(127, 48),
+(128, 38),
+(129, 44),
+(130, 44),
+(131, 58),
+(132, 38),
+(133, 38),
+(134, 26),
+(135, 22),
+(136, 45),
+(137, 49),
+(138, 10),
+(139, 49),
+(140, 53),
+(141, 44),
+(142, 59),
+(143, 50),
+(144, 49),
+(145, 59),
+(146, 54),
+(147, 61),
+(148, 61),
+(149, 7),
+(150, 2),
+(151, 60),
+(152, 18),
+(153, 20),
+(154, 31),
+(155, 26),
+(156, 43),
+(157, 40),
+(158, 2),
+(159, 8),
+(160, 32),
+(161, 55),
+(162, 28),
+(163, 5),
+(164, 56),
+(165, 43),
+(166, 29),
+(167, 52),
+(168, 15),
+(169, 53),
+(170, 15),
+(171, 47),
+(172, 43),
+(173, 51),
+(174, 31),
+(175, 16),
+(176, 16),
+(177, 28),
+(178, 39),
+(179, 34),
+(180, 37),
+(181, 6),
+(182, 7),
+(183, 33),
+(184, 20),
+(185, 7),
+(186, 44),
+(187, 58),
+(188, 15),
+(189, 46),
+(190, 15),
+(191, 32),
+(192, 31),
+(193, 40),
+(194, 6),
+(195, 41),
+(196, 29),
+(197, 32),
+(198, 44),
+(199, 54),
+(200, 39),
+(201, 10),
+(202, 11),
+(203, 52),
+(204, 8),
+(205, 20),
+(206, 11),
+(207, 7),
+(208, 50),
+(209, 48),
+(210, 1),
+(211, 43),
+(212, 6),
+(213, 45),
+(214, 53),
+(215, 57),
+(216, 37);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `libros_categoria`
+-- Estructura de tabla para la tabla `libros_categoria`
 --
 
 DROP TABLE IF EXISTS `libros_categoria`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `libros_categoria` (
+CREATE TABLE IF NOT EXISTS `libros_categoria` (
   `lic_lib_id` int(11) NOT NULL,
-  `lic_cat_id` int(11) NOT NULL,
-  KEY `fk_libros_categoria_libros` (`lic_lib_id`),
-  KEY `fk_libros_categoria_categoria` (`lic_cat_id`),
-  CONSTRAINT `fk_libros_categoria_categoria` FOREIGN KEY (`lic_cat_id`) REFERENCES `categoria` (`cat_id`),
-  CONSTRAINT `fk_libros_categoria_libros` FOREIGN KEY (`lic_lib_id`) REFERENCES `libro` (`lib_id`)
+  `lic_cat_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `libros_categoria`
+-- Truncar tablas antes de insertar `libros_categoria`
 --
 
-LOCK TABLES `libros_categoria` WRITE;
-/*!40000 ALTER TABLE `libros_categoria` DISABLE KEYS */;
-/*!40000 ALTER TABLE `libros_categoria` ENABLE KEYS */;
-UNLOCK TABLES;
+TRUNCATE TABLE `libros_categoria`;
+--
+-- Volcado de datos para la tabla `libros_categoria`
+--
+
+INSERT INTO `libros_categoria` (`lic_lib_id`, `lic_cat_id`) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(5, 3),
+(6, 3),
+(74, 3),
+(4, 4),
+(3, 3),
+(5, 3),
+(6, 3),
+(74, 3),
+(3, 3),
+(5, 3),
+(6, 3),
+(74, 3),
+(7, 3),
+(171, 3),
+(8, 5),
+(174, 5),
+(9, 5),
+(175, 5),
+(10, 5),
+(11, 5),
+(12, 4),
+(13, 6),
+(14, 6),
+(15, 6),
+(16, 6),
+(17, 6),
+(18, 7),
+(19, 8),
+(20, 9),
+(21, 9),
+(22, 9),
+(23, 9),
+(24, 9),
+(25, 9),
+(26, 9),
+(27, 9),
+(55, 9),
+(28, 9),
+(29, 10),
+(30, 10),
+(31, 11),
+(32, 11),
+(33, 11),
+(34, 11),
+(35, 11),
+(36, 11),
+(37, 11),
+(38, 12),
+(39, 12),
+(40, 12),
+(41, 12),
+(42, 13),
+(43, 13),
+(44, 13),
+(45, 2),
+(46, 12),
+(47, 2),
+(48, 2),
+(49, 2),
+(50, 2),
+(49, 2),
+(50, 2),
+(51, 14),
+(52, 14),
+(53, 14),
+(54, 14),
+(172, 14),
+(53, 14),
+(54, 14),
+(172, 14),
+(27, 9),
+(55, 9),
+(56, 15),
+(57, 15),
+(58, 16),
+(59, 15),
+(60, 15),
+(61, 17),
+(62, 15),
+(63, 17),
+(64, 3),
+(66, 3),
+(68, 3),
+(65, 17),
+(64, 3),
+(66, 3),
+(68, 3),
+(67, 17),
+(64, 3),
+(66, 3),
+(68, 3),
+(69, 3),
+(70, 17),
+(71, 3),
+(72, 3),
+(73, 17),
+(3, 3),
+(5, 3),
+(6, 3),
+(74, 3),
+(75, 17),
+(76, 17),
+(77, 3),
+(78, 3),
+(80, 3),
+(81, 3),
+(167, 3),
+(173, 3),
+(180, 3),
+(79, 17),
+(78, 3),
+(80, 3),
+(81, 3),
+(167, 3),
+(173, 3),
+(180, 3),
+(78, 3),
+(80, 3),
+(81, 3),
+(167, 3),
+(173, 3),
+(180, 3),
+(82, 17),
+(83, 17),
+(84, 3),
+(85, 3),
+(86, 17),
+(87, 3),
+(89, 3),
+(88, 17),
+(87, 3),
+(89, 3),
+(90, 17),
+(91, 3),
+(92, 2),
+(93, 18),
+(94, 16),
+(95, 18),
+(96, 16),
+(97, 18),
+(98, 16),
+(99, 18),
+(100, 18),
+(101, 19),
+(102, 19),
+(103, 18),
+(104, 19),
+(105, 19),
+(106, 20),
+(107, 19),
+(108, 20),
+(109, 19),
+(110, 20),
+(111, 20),
+(112, 20),
+(113, 21),
+(114, 21),
+(115, 20),
+(116, 21),
+(117, 20),
+(118, 20),
+(120, 20),
+(122, 20),
+(119, 21),
+(118, 20),
+(120, 20),
+(122, 20),
+(121, 21),
+(118, 20),
+(120, 20),
+(122, 20),
+(123, 20),
+(124, 21),
+(125, 20),
+(127, 20),
+(126, 21),
+(125, 20),
+(127, 20),
+(128, 21),
+(129, 20),
+(130, 20),
+(132, 20),
+(133, 21),
+(134, 21),
+(135, 22),
+(136, 22),
+(137, 21),
+(138, 22),
+(139, 21),
+(140, 22),
+(141, 21),
+(142, 23),
+(143, 24),
+(144, 24),
+(146, 24),
+(145, 23),
+(144, 24),
+(146, 24),
+(147, 23),
+(148, 24),
+(149, 24),
+(150, 24),
+(151, 25),
+(152, 25),
+(153, 25),
+(154, 26),
+(155, 25),
+(157, 2),
+(158, 2),
+(159, 2),
+(160, 5),
+(161, 2),
+(162, 5),
+(163, 5),
+(164, 2),
+(165, 25),
+(166, 7),
+(169, 7),
+(179, 7),
+(78, 3),
+(80, 3),
+(81, 3),
+(167, 3),
+(173, 3),
+(180, 3),
+(168, 5),
+(166, 7),
+(169, 7),
+(179, 7),
+(170, 11),
+(7, 3),
+(171, 3),
+(53, 14),
+(54, 14),
+(172, 14),
+(78, 3),
+(80, 3),
+(81, 3),
+(167, 3),
+(173, 3),
+(180, 3),
+(8, 5),
+(174, 5),
+(9, 5),
+(175, 5),
+(176, 5),
+(177, 19),
+(178, 16),
+(166, 7),
+(169, 7),
+(179, 7),
+(78, 3),
+(80, 3),
+(81, 3),
+(167, 3),
+(173, 3),
+(180, 3),
+(182, 2),
+(183, 2),
+(184, 14),
+(185, 5),
+(186, 3),
+(7, 3),
+(171, 3),
+(182, 2),
+(164, 2),
+(166, 7),
+(169, 7),
+(179, 7),
+(31, 11),
+(31, 11),
+(188, 3),
+(215, 11),
+(216, 11),
+(201, 2),
+(213, 7),
+(213, 7),
+(188, 3),
+(213, 7),
+(200, 2),
+(187, 14),
+(188, 3),
+(189, 22),
+(190, 5),
+(191, 5),
+(192, 5),
+(191, 5),
+(192, 5),
+(193, 27),
+(194, 2),
+(195, 5),
+(196, 5),
+(197, 18),
+(198, 3),
+(199, 3),
+(198, 3),
+(199, 3),
+(200, 2),
+(201, 2),
+(202, 2),
+(203, 3),
+(204, 19),
+(205, 12),
+(206, 6),
+(207, 21),
+(208, 2),
+(209, 21),
+(210, 2),
+(211, 2),
+(212, 21),
+(213, 7),
+(214, 6),
+(215, 11),
+(216, 11),
+(215, 11),
+(216, 11);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `libros_editorial`
+-- Estructura de tabla para la tabla `libros_editorial`
 --
 
 DROP TABLE IF EXISTS `libros_editorial`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `libros_editorial` (
+CREATE TABLE IF NOT EXISTS `libros_editorial` (
   `lie_lib_id` int(11) NOT NULL,
-  `lie_edi_id` int(11) NOT NULL,
-  KEY `fk_libros_editorial_libros` (`lie_lib_id`),
-  KEY `fk_libros_editorial_editorial` (`lie_edi_id`),
-  CONSTRAINT `fk_libros_editorial_editorial` FOREIGN KEY (`lie_edi_id`) REFERENCES `editorial` (`edi_id`),
-  CONSTRAINT `fk_libros_editorial_libros` FOREIGN KEY (`lie_lib_id`) REFERENCES `libro` (`lib_id`)
+  `lie_edi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `libros_editorial`
+-- Truncar tablas antes de insertar `libros_editorial`
 --
 
-LOCK TABLES `libros_editorial` WRITE;
-/*!40000 ALTER TABLE `libros_editorial` DISABLE KEYS */;
-/*!40000 ALTER TABLE `libros_editorial` ENABLE KEYS */;
-UNLOCK TABLES;
+TRUNCATE TABLE `libros_editorial`;
+--
+-- Volcado de datos para la tabla `libros_editorial`
+--
+
+INSERT INTO `libros_editorial` (`lie_lib_id`, `lie_edi_id`) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(5, 3),
+(6, 3),
+(74, 3),
+(4, 4),
+(3, 3),
+(5, 3),
+(6, 3),
+(74, 3),
+(3, 3),
+(5, 3),
+(6, 3),
+(74, 3),
+(7, 2),
+(8, 5),
+(9, 5),
+(10, 6),
+(11, 6),
+(12, 7),
+(13, 8),
+(14, 9),
+(15, 10),
+(16, 3),
+(17, 11),
+(18, 12),
+(19, 13),
+(20, 14),
+(21, 13),
+(22, 15),
+(23, 2),
+(24, 2),
+(25, 2),
+(26, 3),
+(27, 3),
+(55, 3),
+(28, 2),
+(29, 16),
+(30, 17),
+(31, 3),
+(32, 12),
+(33, 18),
+(34, 19),
+(35, 20),
+(36, 18),
+(37, 21),
+(38, 22),
+(39, 21),
+(40, 21),
+(41, 2),
+(42, 23),
+(43, 3),
+(44, 3),
+(45, 2),
+(46, 24),
+(47, 3),
+(48, 25),
+(49, 2),
+(50, 2),
+(49, 2),
+(50, 2),
+(51, 26),
+(52, 12),
+(53, 2),
+(54, 2),
+(53, 2),
+(54, 2),
+(27, 13),
+(55, 13),
+(56, 27),
+(57, 28),
+(58, 13),
+(59, 28),
+(60, 29),
+(61, 30),
+(62, 28),
+(63, 31),
+(64, 3),
+(66, 3),
+(68, 3),
+(65, 31),
+(64, 3),
+(66, 3),
+(68, 3),
+(67, 31),
+(64, 3),
+(66, 3),
+(68, 3),
+(69, 2),
+(70, 31),
+(71, 21),
+(72, 12),
+(73, 32),
+(3, 3),
+(5, 3),
+(6, 3),
+(74, 3),
+(75, 32),
+(76, 32),
+(77, 33),
+(78, 2),
+(80, 2),
+(81, 2),
+(79, 34),
+(78, 2),
+(80, 2),
+(81, 2),
+(78, 2),
+(80, 2),
+(81, 2),
+(82, 35),
+(83, 36),
+(84, 2),
+(85, 2),
+(86, 2),
+(87, 37),
+(89, 37),
+(88, 2),
+(87, 37),
+(89, 37),
+(90, 38),
+(91, 37),
+(92, 37),
+(93, 3),
+(94, 39),
+(95, 3),
+(96, 2),
+(97, 34),
+(98, 3),
+(78, 2),
+(80, 2),
+(81, 2),
+(7, 2),
+(53, 2),
+(54, 2),
+(78, 2),
+(80, 2),
+(81, 2),
+(8, 5),
+(9, 5),
+(78, 2),
+(80, 2),
+(81, 2),
+(7, 2),
+(31, 3),
+(31, 3),
+(171, 2),
+(174, 5),
+(175, 5),
+(172, 2),
+(172, 2),
+(167, 2),
+(173, 2),
+(180, 2),
+(167, 2),
+(173, 2),
+(180, 2),
+(167, 2),
+(173, 2),
+(180, 2),
+(99, 2),
+(100, 3),
+(101, 3),
+(102, 3),
+(103, 2),
+(104, 12),
+(105, 2),
+(106, 3),
+(107, 30),
+(108, 40),
+(109, 41),
+(110, 2),
+(111, 2),
+(112, 3),
+(113, 42),
+(114, 43),
+(115, 2),
+(116, 44),
+(117, 3),
+(118, 3),
+(120, 3),
+(122, 3),
+(119, 45),
+(118, 3),
+(120, 3),
+(122, 3),
+(121, 13),
+(118, 3),
+(120, 3),
+(122, 3),
+(123, 3),
+(124, 24),
+(125, 3),
+(127, 3),
+(126, 18),
+(125, 3),
+(127, 3),
+(128, 18),
+(129, 2),
+(130, 2),
+(132, 3),
+(133, 18),
+(134, 47),
+(135, 9),
+(136, 48),
+(137, 21),
+(138, 48),
+(139, 9),
+(140, 2),
+(141, 18),
+(142, 49),
+(143, 2),
+(144, 2),
+(146, 2),
+(145, 50),
+(144, 2),
+(146, 2),
+(147, 51),
+(148, 2),
+(149, 2),
+(150, 2),
+(151, 10),
+(152, 10),
+(153, 10),
+(154, 13),
+(155, 10),
+(157, 34),
+(158, 34),
+(159, 34),
+(160, 52),
+(161, 34),
+(162, 29),
+(163, 6),
+(164, 2),
+(165, 53),
+(166, 2),
+(169, 2),
+(179, 2),
+(167, 2),
+(173, 2),
+(180, 2),
+(168, 6),
+(166, 2),
+(169, 2),
+(179, 2),
+(170, 54),
+(171, 2),
+(172, 2),
+(167, 2),
+(173, 2),
+(180, 2),
+(174, 5),
+(175, 5),
+(176, 5),
+(177, 2),
+(178, 2),
+(166, 2),
+(169, 2),
+(179, 2),
+(167, 2),
+(173, 2),
+(180, 2),
+(182, 2),
+(183, 2),
+(171, 2),
+(182, 2),
+(164, 2),
+(166, 2),
+(169, 2),
+(179, 2),
+(188, 2),
+(215, 3),
+(216, 3),
+(201, 2),
+(213, 2),
+(213, 2),
+(188, 2),
+(213, 2),
+(200, 2),
+(184, 2),
+(185, 6),
+(186, 2),
+(187, 12),
+(188, 2),
+(189, 31),
+(190, 29),
+(191, 29),
+(192, 29),
+(191, 29),
+(192, 29),
+(193, 55),
+(194, 10),
+(195, 29),
+(196, 29),
+(197, 2),
+(198, 2),
+(199, 2),
+(198, 2),
+(199, 2),
+(200, 2),
+(201, 2),
+(202, 13),
+(203, 2),
+(204, 20),
+(205, 12),
+(206, 2),
+(207, 24),
+(208, 13),
+(209, 18),
+(210, 3),
+(211, 2),
+(212, 18),
+(213, 2),
+(214, 2),
+(215, 3),
+(216, 3),
+(215, 3),
+(216, 3);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `prestamo`
+-- Estructura de tabla para la tabla `prestamo`
 --
 
 DROP TABLE IF EXISTS `prestamo`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `prestamo` (
-  `pre_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `prestamo` (
+`pre_id` int(11) NOT NULL,
   `pre_usu_id` int(11) DEFAULT NULL,
   `pre_lib_id` int(11) DEFAULT NULL,
   `pre_f_salida` date DEFAULT NULL,
   `pre_f_entrega` date DEFAULT NULL,
   `pre_cantidad` int(2) DEFAULT NULL,
-  `pre_estatus` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`pre_id`),
-  KEY `fk_prestamo_usuario` (`pre_usu_id`),
-  KEY `fk_prestamo_libro` (`pre_lib_id`),
-  CONSTRAINT `fk_prestamo_libro` FOREIGN KEY (`pre_lib_id`) REFERENCES `libro` (`lib_id`),
-  CONSTRAINT `fk_prestamo_usuario` FOREIGN KEY (`pre_usu_id`) REFERENCES `usuario` (`usu_id`)
+  `pre_estatus` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `prestamo`
+-- Truncar tablas antes de insertar `prestamo`
 --
 
-LOCK TABLES `prestamo` WRITE;
-/*!40000 ALTER TABLE `prestamo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `prestamo` ENABLE KEYS */;
-UNLOCK TABLES;
+TRUNCATE TABLE `prestamo`;
+-- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
+-- Estructura de tabla para la tabla `usuario`
 --
 
 DROP TABLE IF EXISTS `usuario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `usuario` (
-  `usu_id` int(11) NOT NULL DEFAULT '0',
+CREATE TABLE IF NOT EXISTS `usuario` (
+`usu_id` int(11) NOT NULL,
   `usu_nombre` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `usu_email` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `usu_clave` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `usu_telefono` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`usu_id`)
+  `usu_telefono` varchar(10) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `usuario`
+-- Truncar tablas antes de insertar `usuario`
 --
 
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+TRUNCATE TABLE `usuario`;
+--
+-- Índices para tablas volcadas
+--
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Indices de la tabla `autor`
+--
+ALTER TABLE `autor`
+ ADD PRIMARY KEY (`aut_id`);
+
+--
+-- Indices de la tabla `categoria`
+--
+ALTER TABLE `categoria`
+ ADD PRIMARY KEY (`cat_id`);
+
+--
+-- Indices de la tabla `editorial`
+--
+ALTER TABLE `editorial`
+ ADD PRIMARY KEY (`edi_id`);
+
+--
+-- Indices de la tabla `libro`
+--
+ALTER TABLE `libro`
+ ADD PRIMARY KEY (`lib_id`);
+
+--
+-- Indices de la tabla `libros_autor`
+--
+ALTER TABLE `libros_autor`
+ ADD KEY `fk_libros_autor_libros` (`lia_lib_id`), ADD KEY `fk_libros_autor_autor` (`lia_aut_id`);
+
+--
+-- Indices de la tabla `libros_categoria`
+--
+ALTER TABLE `libros_categoria`
+ ADD KEY `fk_libros_categoria_libros` (`lic_lib_id`), ADD KEY `fk_libros_categoria_categoria` (`lic_cat_id`);
+
+--
+-- Indices de la tabla `libros_editorial`
+--
+ALTER TABLE `libros_editorial`
+ ADD KEY `fk_libros_editorial_libros` (`lie_lib_id`), ADD KEY `fk_libros_editorial_editorial` (`lie_edi_id`);
+
+--
+-- Indices de la tabla `prestamo`
+--
+ALTER TABLE `prestamo`
+ ADD PRIMARY KEY (`pre_id`), ADD KEY `fk_prestamo_usuario` (`pre_usu_id`), ADD KEY `fk_prestamo_libro` (`pre_lib_id`);
+
+--
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+ ADD PRIMARY KEY (`usu_id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `autor`
+--
+ALTER TABLE `autor`
+MODIFY `aut_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=62;
+--
+-- AUTO_INCREMENT de la tabla `categoria`
+--
+ALTER TABLE `categoria`
+MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
+--
+-- AUTO_INCREMENT de la tabla `editorial`
+--
+ALTER TABLE `editorial`
+MODIFY `edi_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=56;
+--
+-- AUTO_INCREMENT de la tabla `libro`
+--
+ALTER TABLE `libro`
+MODIFY `lib_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=217;
+--
+-- AUTO_INCREMENT de la tabla `prestamo`
+--
+ALTER TABLE `prestamo`
+MODIFY `pre_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+MODIFY `usu_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `libros_autor`
+--
+ALTER TABLE `libros_autor`
+ADD CONSTRAINT `fk_libros_autor_autor` FOREIGN KEY (`lia_aut_id`) REFERENCES `autor` (`aut_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `fk_libros_autor_libros` FOREIGN KEY (`lia_lib_id`) REFERENCES `libro` (`lib_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `libros_categoria`
+--
+ALTER TABLE `libros_categoria`
+ADD CONSTRAINT `fk_libros_categoria_categoria` FOREIGN KEY (`lic_cat_id`) REFERENCES `categoria` (`cat_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `fk_libros_categoria_libros` FOREIGN KEY (`lic_lib_id`) REFERENCES `libro` (`lib_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `libros_editorial`
+--
+ALTER TABLE `libros_editorial`
+ADD CONSTRAINT `fk_libros_editorial_editorial` FOREIGN KEY (`lie_edi_id`) REFERENCES `editorial` (`edi_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `fk_libros_editorial_libros` FOREIGN KEY (`lie_lib_id`) REFERENCES `libro` (`lib_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `prestamo`
+--
+ALTER TABLE `prestamo`
+ADD CONSTRAINT `fk_prestamo_libro` FOREIGN KEY (`pre_lib_id`) REFERENCES `libro` (`lib_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `fk_prestamo_usuario` FOREIGN KEY (`pre_usu_id`) REFERENCES `usuario` (`usu_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2015-05-28 18:17:31
