@@ -59,10 +59,62 @@ class Libro{
 	echo "Datos insertados correctamente";
 	}
 
-	public function bajaLibro($id){}
+	public function bajaLibro($id){
+		$conexion = new Conexion();
+		$sql = "update libro set lib_disponible=0 where lib_id = $id";
+		mysqli_query($conexion->link, $sql) or die(mysqli_error($conexion->link));
+		echo "Libro dado de baja exitosamente";
+	}
 	public function actualizaLibro(){}
-	public static function buscaLibro($id){}
-	public static function buscaLibros($nombre){}
-	public static function listaLibros(){}
+	public static function buscaLibro($id){
+		$conexion = new Conexion();
+		$sql = "select * from libro where lib_disponible=1 and lib_id=$id";
+		$query = mysqli_query($conexion->link, $sql) or die(mysqli_error($conexion->link));
+		while($r = mysqli_fetch_assoc($query)){
+			// por cada libro, buscar la relación con autores
+			$sql = "select aut_id, aut_nombre 
+					from autor, libros_autor 
+					where lia_aut_id = aut_id and lia_lib_id=$id";
+			$query_aut = mysqli_query($conexion->link, $sql)  or die(mysqli_error($conexion->link));
+			$autores = Array();
+			while ($a = mysqli_fetch_assoc($query_aut)){$autores[]=$a;}
+			$r["autores"]=$autores; // generamos una nueva posicion en el arreglo de libro indicando el o los autores
+
+			$sql = "select cat_id, cat_nombre 
+					from categoria, libros_categoria 
+					where lic_cat_id = cat_id and lic_lib_id=$id";
+			$query_aut = mysqli_query($conexion->link, $sql)  or die(mysqli_error($conexion->link));
+			$categorias = Array();
+			while ($a = mysqli_fetch_assoc($query_aut)){$categorias[]=$a;}
+			$r["categorias"]=$categorias;
+
+			$sql = "select edi_id, edi_nombre 
+					from editorial, libros_editorial 
+					where lie_edi_id = edi_id and lie_lib_id=$id";
+			$query_aut = mysqli_query($conexion->link, $sql)  or die(mysqli_error($conexion->link));
+			$editorial = Array();
+			while ($a = mysqli_fetch_assoc($query_aut)){$editorial[]=$a;}
+			$r["editorial"]=$editorial;
+
+			$rows[]=$r;
+		}
+		echo json_encode($rows);
+	}
+	public static function buscaLibros($nombre){
+		$conexion = new Conexion();
+		$sql = "select * from libro where lib_disponible=1 and lib_titulo like '%$nombre%'";
+		$query = mysqli_query($conexion->link, $sql) or die(mysqli_error($conexion->link));
+		while($r = mysqli_fetch_assoc($query)){$rows[]=$r;}
+
+		echo json_encode($rows);
+	}
+	public static function listaLibros(){
+		$conexion = new Conexion();
+		$sql = "select * from libro where lib_disponible=1";
+		$query = mysqli_query($conexion->link, $sql) or die(mysqli_error($conexion->link));
+		while($r = mysqli_fetch_assoc($query)){$rows[]=$r;}
+
+		echo json_encode($rows);
+	}
 }
 ?>

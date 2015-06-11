@@ -11,6 +11,7 @@ class Conexion{
 									$this->getuser(),
 									$this->getpassword(),
 									$this->getdatabase());
+		mysqli_set_charset($this->link, "utf8");
 	}
 
 
