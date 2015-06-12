@@ -50,13 +50,13 @@
 				</div>
 				<div class="form-container">
 					<label for="autor">Autor</label>
-					<input type="text" id="autor" class="form-control"  placeholder="Escriba el nombre del autor">
-					<select id="aut_id" name="aut_id[]" multiple class="form-control"></select>
+					<input type="text" id="autor" class="autor form-control"  placeholder="Escriba el nombre del autor">
+					<select id="aut_id" name="aut_id[]" multiple class="aut_id form-control"></select>
 				</div>
 				<div class="form-container">
 					<label for="categoria">Categoria</label>
-					<input type="text" id="categoria" class="form-control" placeholder="Escriba el nombre de la categoria">
-					<select id="cat_id" name="cat_id[]" multiple class="form-control"></select>
+					<input type="text" id="categoria" class="categoria form-control" placeholder="Escriba el nombre de la categoria">
+					<select id="cat_id" name="cat_id[]" multiple class="cat_id form-control"></select>
 				</div>
 				<div class="form-container">
 					<input type="submit" id="insertar_libro" value="Insertar libro" class="form-control btn btn-primary">
@@ -100,13 +100,13 @@
 					</div>
 					<div class="form-container">
 						<label for="autor">Autor</label>
-						<input type="text" id="Mautor" class="form-control"  placeholder="Escriba el nombre del autor">
-						<select id="Maut_id" name="aut_id[]" multiple class="form-control"></select>
+						<input type="text" id="Mautor" class="autor form-control"  placeholder="Escriba el nombre del autor">
+						<select id="Maut_id" name="aut_id[]" multiple class="aut_id form-control"></select>
 					</div>
 					<div class="form-container">
 						<label for="categoria">Categoria</label>
-						<input type="text" id="Mcategoria" class="form-control" placeholder="Escriba el nombre de la categoria">
-						<select id="Mcat_id" name="cat_id[]" multiple class="form-control"></select>
+						<input type="text" id="Mcategoria" class="categoria form-control" placeholder="Escriba el nombre de la categoria">
+						<select id="Mcat_id" name="cat_id[]" multiple class="cat_id form-control"></select>
 					</div>
 					<div class="form-container">
 						<input type="hidden" id="lib_id" name="lib_id" >
@@ -126,22 +126,61 @@
 			} 
 		});
 
-		$("#autor").autocomplete({
+		$(".autor").autocomplete({
 			source: "../modelos/autores/listarNombreAutocomplete.php",
 			select: function(evento, autores){
-				$("#aut_id").append("<option selected value='"+
+				if ($(this).attr("id") == "Mautor"){
+					$.post("../modelos/libros/agrega_autor.php", 
+						{"lib_id":$("#lib_id").val(), "aut_id":autores.item.id},
+						function(respuesta){
+							console.log(respuesta);
+						});
+				}
+				$(".aut_id").append("<option selected value='"+
 									autores.item.id
 								+"'>"+ autores.item.label+"</option>");
 			} 
 		});
-		$("#categoria").autocomplete({
+
+		$(".categoria").autocomplete({
 			source: "../modelos/categorias/listarNombreAutocomplete.php",
 			select: function(evento, categorias){
-				$("#cat_id").append("<option selected value='"+
+				if ($(this).attr("id") == "Mcategoria"){
+					$.post("../modelos/libros/agrega_categoria.php", 
+						{"lib_id":$("#lib_id").val(), "cat_id":categorias.item.id},
+						function(respuesta){
+							console.log(respuesta);
+						});
+				}
+				$(".cat_id").append("<option selected value='"+
 									categorias.item.id
 								+"'>"+ categorias.item.label+"</option>");
 			} 
 		});
+
+		$(document).on("dblclick","#aut_id option, #cat_id option",function(){
+			$(this).remove();
+		});
+
+		$(document).on("dblclick", "#Maut_id option", function(evento){
+					$(this).remove();
+			$.post("../modelos/libros/quita_autor.php", 
+				{"lib_id":$("#lib_id").val(), "aut_id":$(this).attr("value")},
+				function(respuesta){
+					console.log(respuesta);
+				});
+		});
+
+		$(document).on("dblclick", "#Mcat_id option", function(evento){
+					$(this).remove();
+			$.post("../modelos/libros/quita_categoria.php", 
+				{"lib_id":$("#lib_id").val(), "cat_id":$(this).attr("value")},
+				function(respuesta){
+					console.log(respuesta);
+				});
+		});
+
+
 
 		$(document).on("click", "#insertar_libro", function(evento){
 			evento.preventDefault();
@@ -190,6 +229,35 @@
 				$.post("../modelos/libros/buscaId.php", {"lib_id":id}, 
 					function(respuesta){
 						console.log(respuesta);
+						$("#lib_id").val(respuesta[0].lib_id);
+						$("#Mtitulo").val(respuesta[0].lib_titulo);
+						$("#Misbn").val(respuesta[0].lib_isbn);
+						$("#Mnum_pags").val(respuesta[0].lib_num_pags);
+						$("#Mformato").val(respuesta[0].lib_formato);
+						$("#Mcantidad").val(respuesta[0].lib_cantidad);
+
+						$("#Meditorial").val(respuesta[0].editorial[0].edi_nombre);
+						$("#Medi_id").val(respuesta[0].editorial[0].edi_id);
+
+						autores = respuesta[0].autores;
+						$("#Maut_id").html("");
+						autores.forEach(function(autor, index){
+							$("#Maut_id").append("<option value='"+
+													autor.aut_id
+													+"' selected>"+
+													autor.aut_nombre+
+													"</option>");
+						});
+
+						categorias = respuesta[0].categorias;
+						$("#Mcat_id").html("");
+						categorias.forEach(function(categoria, index){
+							$("#Mcat_id").append("<option value='"+
+													categoria.cat_id
+													+"' selected>"+
+													categoria.cat_nombre+
+													"</option>");
+						});
 					}, "json");
 
 			});
@@ -213,6 +281,23 @@
 				$(".acciones").hide();
 			},"json");
 		});
+
+		$(document).on("keyup",function(evento){
+			if (evento.keyCode == 27){
+				$("#overlay").hide(500);
+				$("#aut_id").html("");
+				$("#cat_id").html("");
+			}
+		});
+
+		$(document).on("submit","#frm_modificar",function(evt){
+			evt.preventDefault();
+			$.post("../modelos/libros/modificar.php", $("#frm_modificar").serialize(),
+				function(respuesta){
+					alert(respuesta);
+					lista();
+				});
+		})
 	</script>
 </body>
 </html>

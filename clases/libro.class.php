@@ -65,7 +65,16 @@ class Libro{
 		mysqli_query($conexion->link, $sql) or die(mysqli_error($conexion->link));
 		echo "Libro dado de baja exitosamente";
 	}
-	public function actualizaLibro(){}
+
+	public function actualizaLibro(){
+		$conexion = new Conexion();
+		$sql = "update libro set lib_titulo='$this->titulo', lib_isbn='$this->isbn',
+		lib_num_pags='$this->num_pags', lib_formato='$this->formato', lib_cantidad='$this->cantidad'
+		 where lib_id = $this->id";
+		mysqli_query($conexion->link, $sql) or die(mysqli_error($conexion->link));
+		echo "Libro actualizado exitosamente";
+	}
+
 	public static function buscaLibro($id){
 		$conexion = new Conexion();
 		$sql = "select * from libro where lib_disponible=1 and lib_id=$id";
@@ -102,7 +111,7 @@ class Libro{
 	}
 	public static function buscaLibros($nombre){
 		$conexion = new Conexion();
-		$sql = "select * from libro where lib_disponible=1 and lib_titulo like '%$nombre%'";
+		$sql = "select *, lib_id as id, lib_titulo as label from libro where lib_disponible=1 and lib_titulo like '%$nombre%'";
 		$query = mysqli_query($conexion->link, $sql) or die(mysqli_error($conexion->link));
 		while($r = mysqli_fetch_assoc($query)){$rows[]=$r;}
 
@@ -115,6 +124,34 @@ class Libro{
 		while($r = mysqli_fetch_assoc($query)){$rows[]=$r;}
 
 		echo json_encode($rows);
+	}
+
+	public static function agregaAutor($lib_id, $aut_id){
+		$conexion = new Conexion();
+		$sql = "insert into libros_autor (lia_lib_id, lia_aut_id) values($lib_id, $aut_id)";
+		mysqli_query($conexion->link, $sql) or die(mysqli_error($conexion->link));
+		echo "Agregado correctamente";
+	}
+
+	public static function quitaAutor($lib_id, $aut_id){
+		$conexion = new Conexion();
+		$sql = "delete from libros_autor where lia_lib_id= $lib_id and lia_aut_id = $aut_id limit 1";
+		mysqli_query($conexion->link, $sql) or die(mysqli_error($conexion->link));
+		echo "Eliminada correctamente";
+	}
+
+	public static function quitaCategoria($lib_id, $cat_id){
+		$conexion = new Conexion();
+		$sql = "delete from libros_categoria where lic_lib_id= $lib_id and lic_cat_id = $cat_id limit 1";
+		mysqli_query($conexion->link, $sql) or die(mysqli_error($conexion->link));
+		echo "Eliminada correctamente";
+	}
+
+	public static function agregaCategoria($lib_id, $cat_id){
+		$conexion = new Conexion();
+		$sql = "insert into libros_categoria (lic_lib_id, lic_cat_id) values($lib_id, $cat_id)";
+		mysqli_query($conexion->link, $sql) or die(mysqli_error($conexion->link));
+		echo "Agregado correctamente";
 	}
 }
 ?>

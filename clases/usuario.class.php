@@ -46,7 +46,7 @@ class Usuario{
 	}
 	public static function buscaUsuarios($nombre){
 		$conexion = new Conexion();
-		$sql = "select * from usuario where usu_nombre like '%$nombre%'";
+		$sql = "select *, usu_id as id, usu_nombre as label from usuario where usu_nombre like '%$nombre%'";
 		$query = mysqli_query($conexion->link, $sql) or die("Error: ".mysqli_error($conexion->link));
 		while ($reg = mysqli_fetch_assoc($query)){ $regs[] = $reg;}		
 		echo json_encode($regs);
